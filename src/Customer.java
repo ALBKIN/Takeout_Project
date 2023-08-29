@@ -1,4 +1,5 @@
-// Class representing customer in the take-out system
+// Class representing a CUSTOMER in the take-out system
+
 public class Customer{
 
     private String name;
