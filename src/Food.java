@@ -23,6 +23,6 @@ public class Food implements PricedItem<Integer> {
 
     @Override
     public String toString() {
-        return "Enjoy " + name + ": " + description + "    " + "Cost: $" + price);
+        return "Enjoy " + name + ": " + description + "    " + "Cost: $" + price;
     }
 }
