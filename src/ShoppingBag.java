@@ -18,5 +18,12 @@ public class ShoppingBag<T extends PricedItem<Integer>> {
         }
     }
 
-    // TODO 1:  add getTotalPrice() method to calculate the total price of each item in shopping bag
+    public int getTotalPrice() {
+        int grandTotal = 0;
+        for (T item : shoppingBag.keySet()) {
+            int totalForSeparateItem = item.getPrice() * shoppingBag.get(item);
+            grandTotal += totalForSeparateItem;
+        }
+        return grandTotal;
+    }
 }
