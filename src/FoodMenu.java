@@ -24,6 +24,19 @@ public class FoodMenu {
         }
     }
 
+    public Food getLowestCostFood() {
+        if (menu == null || menu.isEmpty()) {
+            return null;
+        }
+        Food lowestPriceFood = menu.get(0);
+        for (Food food : menu) {
+            if (food.getPrice() <= lowestPriceFood.getPrice()) {
+                lowestPriceFood = food;
+            }
+        }
+        return lowestPriceFood;
+    }
+
     @Override
     public String toString() {
         StringBuilder menuBuilder = new StringBuilder();
