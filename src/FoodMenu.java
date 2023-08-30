@@ -16,6 +16,13 @@ public class FoodMenu {
         menu.add(new Food("Salad", "Green and healthy veggie stuff", 20));
     }
 
+    public Food getFood(int index) {
+        if (index >= 1 && index <= menu.size()) {
+            return menu.get(index - 1);
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         StringBuilder menuBuilder = new StringBuilder();
