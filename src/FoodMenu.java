@@ -17,10 +17,11 @@ public class FoodMenu {
     }
 
     public Food getFood(int index) {
-        if (index >= 1 && index <= menu.size()) {
+        try {
             return menu.get(index - 1);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
         }
-        return null;
     }
 
     @Override
