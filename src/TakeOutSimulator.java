@@ -33,6 +33,25 @@ public class TakeOutSimulator {
         }
     }
 
+    private boolean shouldSimulate() {
+        String userPrompt = "Enter 1 to CONTINUE simulation or 0 to EXIT program: ";
+
+        IntUserInputRetriever<Boolean> intUserInputRetriever = selection -> {
+            if (selection == 1) {
+                Food lowestPriceFood = menu.getLowestCostFood();
+                if (customer.getMoney() >= lowestPriceFood.getPrice()) {
+                    return true;
+                } else {
+                    System.out.println("You don't have enough money to continue shopping :( - ending simulation...");
+                    return false;
+                }
+            } else {
+                throw new IllegalArgumentException("Invalid selection! Enter 0 or 1.");
+            }
+        };
+        return getOutputOnIntInput(userPrompt, intUserInputRetriever);
+    }
+
     // GETTERS & SETTERS
     public Customer getCustomer() {
         return customer;
