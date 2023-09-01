@@ -101,7 +101,6 @@ public class TakeOutSimulator {
         ShoppingBag<Food> shoppingBag = new ShoppingBag<>();
         int customerMoneyLeft = customer.getMoney();
 
-//        int totalPrice = shoppingBag.getTotalPrice();
         while (true) { // start of the loop
             System.out.printf("You have $%d left to spend%n", customerMoneyLeft);
             System.out.println("Today's Menu Options!" + menu.toString());
@@ -125,28 +124,37 @@ public class TakeOutSimulator {
         checkoutCustomer(shoppingBag);
     }
 
-        // GETTERS & SETTERS
-        public Customer getCustomer () {
-            return customer;
-        }
+    public void startTakeOutSimulator() {
+        System.out.println("Yo, yo, yo! Welcome to my awesomeee take-out ristorante!");
 
-        public void setCustomer (Customer customer){
-            this.customer = customer;
-        }
-
-        public FoodMenu getMenu () {
-            return menu;
-        }
-
-        public void setMenu (FoodMenu menu){
-            this.menu = menu;
-        }
-
-        public Scanner getInput () {
-            return input;
-        }
-
-        public void setInput (Scanner input){
-            this.input = input;
+        while (shouldSimulate()) {
+            System.out.printf("\nWelcome %s!!1!1!!!%n", customer.getName());
+            takeOutPrompt();
         }
     }
+
+    // GETTERS & SETTERS
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public FoodMenu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(FoodMenu menu) {
+        this.menu = menu;
+    }
+
+    public Scanner getInput() {
+        return input;
+    }
+
+    public void setInput(Scanner input) {
+        this.input = input;
+    }
+}
