@@ -40,12 +40,26 @@ public class FoodMenu {
     @Override
     public String toString() {
         StringBuilder menuBuilder = new StringBuilder();
+
+        // Find the longest length of menu position in order to later properly format Cost for all position
+        int longestName = 0;
+        for (Food food : menu) {
+            String nameAndDescription = food.toString();
+            if (nameAndDescription.length() > longestName) {
+                longestName = nameAndDescription.length();
+            }
+        }
+
         for (int i = 0; i < menu.size(); i++) {
-            menuBuilder.append(i + 1)
-                    .append(". ")
-                    .append(menu.get(i).toString()) // Using the already @Overriden toString() method from Food class
-                    .append("\n");
+            Food food = menu.get(i);
+            String nameAndDescription = "Enjoy " + food.getName() + ": " + food.getDescription();
+
+            // This line pads the food name and description with spaces to align the prices
+            String formattedString = String.format("%d. %-" + longestName + "s Cost: $%d", i + 1, nameAndDescription, food.getPrice());
+
+            menuBuilder.append(formattedString).append("\n");
         }
         return menuBuilder.toString();
     }
 }
+
