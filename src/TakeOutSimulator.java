@@ -53,7 +53,7 @@ public class TakeOutSimulator {
     }
 
     private Food getMenuSelection() {
-        String userPrompt = "Enter a NUMBER of a menu position you want to choose: ";
+        String userPrompt = "Choose a menu item: ";
 
         IntUserInputRetriever<Food> intUserInputRetriever = selection -> {
             Food selectedFood = menu.getFood(selection);
@@ -103,7 +103,7 @@ public class TakeOutSimulator {
 
         while (true) { // start of the loop
             System.out.printf("You have $%d left to spend%n", customerMoneyLeft);
-            System.out.println("Today's Menu Options!" + menu.toString());
+            System.out.println("\nToday's Menu Options:\n" + menu.toString());
 
             Food selectedFood = getMenuSelection();
             int foodPrice = selectedFood.getPrice();
@@ -128,7 +128,7 @@ public class TakeOutSimulator {
         System.out.println("Yo, yo, yo! Welcome to my awesomeee take-out ristorante!");
 
         while (shouldSimulate()) {
-            System.out.printf("\nWelcome %s!!1!1!!!%n", customer.getName());
+            System.out.printf("\nWelcome %s!!!%n", customer.getName());
             takeOutPrompt();
         }
     }
