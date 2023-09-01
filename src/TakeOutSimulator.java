@@ -97,28 +97,56 @@ public class TakeOutSimulator {
         }
     }
 
-    // GETTERS & SETTERS
-    public Customer getCustomer() {
-        return customer;
+    private void takeOutPrompt() {
+        ShoppingBag<Food> shoppingBag = new ShoppingBag<>();
+        int customerMoneyLeft = customer.getMoney();
+
+//        int totalPrice = shoppingBag.getTotalPrice();
+        while (true) { // start of the loop
+            System.out.printf("You have $%d left to spend%n", customerMoneyLeft);
+            System.out.println("Today's Menu Options!" + menu.toString());
+
+            Food selectedFood = getMenuSelection();
+            int foodPrice = selectedFood.getPrice();
+
+            if (customerMoneyLeft >= foodPrice) {
+                shoppingBag.addItem(selectedFood);
+                customerMoneyLeft -= foodPrice;
+            } else {
+                System.out.println("Oops! Looks like you don't have enough for that. Choose another item or checkout.");
+            }
+            // Ask the user if they are still ordering food
+            if (!isStillOrderingFood()) {
+                break; // End the loop if the user decides to check out
+            }
+        }
+        // Perform checkout
+        customer.setMoney(customerMoneyLeft);
+        checkoutCustomer(shoppingBag);
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
+        // GETTERS & SETTERS
+        public Customer getCustomer () {
+            return customer;
+        }
 
-    public FoodMenu getMenu() {
-        return menu;
-    }
+        public void setCustomer (Customer customer){
+            this.customer = customer;
+        }
 
-    public void setMenu(FoodMenu menu) {
-        this.menu = menu;
-    }
+        public FoodMenu getMenu () {
+            return menu;
+        }
 
-    public Scanner getInput() {
-        return input;
-    }
+        public void setMenu (FoodMenu menu){
+            this.menu = menu;
+        }
 
-    public void setInput(Scanner input) {
-        this.input = input;
+        public Scanner getInput () {
+            return input;
+        }
+
+        public void setInput (Scanner input){
+            this.input = input;
+        }
     }
-}
