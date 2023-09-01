@@ -1,6 +1,12 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+// TODO 1: Enable customer to check their shopping bag
+// TODO 2: Improve the initial user prompt
+// TODO 3: Provide feedback upon completing actions
+// TODO 4: Order history
+// TODO 5: Replace current customer creation and money setup (sign in/up || customer and balance database
+
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
