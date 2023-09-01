@@ -111,23 +111,23 @@ public class TakeOutSimulator {
             if (customerMoneyLeft >= foodPrice) {
                 shoppingBag.addItem(selectedFood);
                 customerMoneyLeft -= foodPrice;
+                customer.setMoney(customerMoneyLeft);
             } else {
                 System.out.println("Oops! Looks like you don't have enough for that. Choose another item or checkout.");
             }
             // Ask the user if they are still ordering food
             if (!isStillOrderingFood()) {
+                customer.setMoney(customerMoneyLeft);
                 break; // End the loop if the user decides to check out
             }
         }
         // Perform checkout
-        customer.setMoney(customerMoneyLeft);
         checkoutCustomer(shoppingBag);
     }
 
     public void startTakeOutSimulator() {
-        System.out.println("Yo, yo, yo! Welcome to my awesomeee take-out ristorante!");
-
         while (shouldSimulate()) {
+            System.out.println("Yo, yo, yo! Welcome to my awesomeee take-out ristorante!");
             System.out.printf("\nWelcome %s!!!%n", customer.getName());
             takeOutPrompt();
         }
