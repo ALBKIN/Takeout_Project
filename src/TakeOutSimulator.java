@@ -52,6 +52,20 @@ public class TakeOutSimulator {
         return getOutputOnIntInput(userPrompt, intUserInputRetriever);
     }
 
+    private Food getMenuSelection() {
+        String userPrompt = "Enter a NUMBER of a menu position you want to choose: ";
+
+        IntUserInputRetriever<Food> intUserInputRetriever = selection -> {
+            Food selectedFood = menu.getFood(selection);
+            if (selectedFood != null) {
+                return selectedFood;
+            } else {
+                throw new IllegalArgumentException("Invalid selection! Enter a valid menu NUMBER");
+            }
+        };
+        return getOutputOnIntInput(userPrompt, intUserInputRetriever);
+    }
+
     private boolean isStillOrderingFood() {
         String userPrompt = "Enter 1 to CONTINUE shopping or 0 to CHECKOUT: ";
 
